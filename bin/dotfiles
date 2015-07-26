@@ -5,8 +5,8 @@
 # - variables which is depended on, like LANGUAGE
 
 export DOTFILES_DIRECTORY="${HOME}/dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/stefanius/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="https://github.com/stefanius/dotfiles"
+DOTFILES_TARBALL_PATH="https://github.com/pkruithof/dotfiles/tarball/master"
+DOTFILES_GIT_REMOTE="https://github.com/pkruithof/dotfiles"
 
 link() {
   # Force create/replace the symlink.
@@ -21,27 +21,37 @@ mirrorfiles() {
 
   if is_confirmed; then
     # Copy `.gitconfig`.
-    # Any global git commands in `~/.localrc` will be written to
+    # Any global git commands in `~/.gitrc` will be written to
     # `.gitconfig`. This prevents them being committed to the repository.
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/config  ${HOME}/.gitconfig
+
+    if [ -f "${HOME}/.gitrc" ]; then
+        cat "${HOME}/.gitrc" >> ${HOME}/.gitconfig
+    fi
 
     # Force remove the vim directory if it's already there.
     if [ -e "${HOME}/.vim" ]; then
         rm -rf "${HOME}/.vim"
     fi
 
+    # Create the zsh directory if it's not there yet.
+    if [ ! -d "${HOME}/.zsh" ]; then
+        mkdir "${HOME}/.zsh"
+    fi
+ 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory. The `bash_profile` sources other files directly from the
     # `.dotfiles` repository.
 
     # ZSH files
-    link "zsh"                 ".zsh"
     link "zsh/rc"              ".zshrc"
     link "zsh/env"             ".zshenv"
     link "zsh/login"           ".zlogin"
+    link "zsh/config"          ".zsh/config"
+    link "zsh/input"           ".zsh/input"
+    link "zsh/pk.zsh-theme"    ".oh-my-zsh/themes/pk.zsh-theme"
 
     # Bash files
-    link "bash"                ".bash"
     link "bash/rc"             ".bashrc"
     link "bash/profile"        ".bash_profile"
     link "bash/prompt"         ".bash_prompt"
@@ -58,8 +68,16 @@ mirrorfiles() {
 
     # Vim
     link "vim"                 ".vim"
+    link "vim/bundle/vim-pathogen/autoload/pathogen.vim" \
+                               ".vim/autoload/pathogen.vim"
     link "vim/gvimrc"          ".gvimrc"
     link "vim/vimrc"           ".vimrc"
+
+    # Curl
+    link "curl/rc"             ".curlrc"
+
+    # Screen
+    link "screen/rc"           ".screenrc"
 
     # Ruby
     link "ruby/gemrc"          ".gemrc"
@@ -67,8 +85,11 @@ mirrorfiles() {
     # SSH
     link "ssh/config"          ".ssh/config"
 
+    # Tmux
+    link "tmux/conf"           ".tmux.conf"
+
     # Plugins
-    link "dircolors-solarized" "dircolors-solarized"
+    link "dircolors-solarized" "."
 
     # System-specific config
     sys=`uname -s | tr "[:upper:]" "[:lower:]"`
@@ -123,7 +144,7 @@ if [[ "$systemName" == "darwin" ]]; then
   # Check for Homebrew
   if ! type_exists 'brew'; then
     e_header "Installing Homebrew..."
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 
   # Check for git

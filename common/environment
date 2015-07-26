@@ -1,4 +1,3 @@
-autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
@@ -15,7 +14,7 @@ solar[base01]=${FG[240]}
 solar[base00]=${FG[241]}
 solar[base0]=${FG[244]}
 solar[base1]=${FG[245]}
-solar[base2]=${FG[064]}
+solar[base2]=${FG[254]}
 solar[base3]=${FG[230]}
 solar[yellow]=${FG[136]}
 solar[orange]=${FG[166]}

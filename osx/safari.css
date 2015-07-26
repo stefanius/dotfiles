@@ -2,6 +2,6 @@ body {
   font: 16px Helvetica;
 }
 
-pre, code {
-  font: 14px Menlo;
+pre, code {		
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;		
 }

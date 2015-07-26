@@ -2,11 +2,8 @@
 
 # add Homebrew bins before path
 for dir in \
-    "$(brew --prefix coreutils)/libexec/gnubin" \
     "$(brew --prefix)/bin"                      \
-    "$(brew --prefix)/sbin"                     \
-    "$(brew --prefix ruby)/bin"                 \
-    "$(brew --prefix php55)/bin"
+    "$(brew --prefix)/sbin"
 ; do
     if [[ -d $dir ]]; then path[1,0]=$dir; fi
 done
@@ -40,16 +37,13 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 # Vagrant aliases
 alias vu='vagrant up'
 alias vup='vagrant up --provision'
-alias vssh='vagrant ssh'
+alias vssh='vagrant ssh -p'
 alias vp='vagrant provision'
 alias vr='vagrant reload'
 alias vrp='vagrant reload --provision'
 
-# Hub alias
-#eval "$(hub alias -s)"
-
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias updatesystem="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
+alias updatesystem="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias cleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"

@@ -8,19 +8,18 @@ set show-all-if-ambiguous on
 set mark-symlinked-directories on
 
 # Key bindings for better cursor movement and history search
-# disabled to prevent errors
-#"\e[1~": beginning-of-line       # Home
-#"\e[4~": end-of-line             # End
-#"\e[5~": history-search-backward # Page Up
-#"\e[6~": history-search-forward  # Page Down
-#"\e[3~": delete-char             # Delete
-#"\e[5C": forward-word            # Ctrl + Right
-#"\e[5D": backward-word           # Ctrl + Left
+"\e[1~": beginning-of-line       # Home
+"\e[4~": end-of-line             # End
+"\e[5~": history-search-backward # Page Up
+"\e[6~": history-search-forward  # Page Down
+"\e[3~": delete-char             # Delete
+"\e[5C": forward-word            # Ctrl + Right
+"\e[5D": backward-word           # Ctrl + Left
 
 # Use the text that has already been typed as the prefix for searching through
 # commands (i.e. more intelligent Up/Down behavior)
-#"\e[B": history-search-forward
-#"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[A": history-search-backward
 
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
@@ -47,4 +46,4 @@ set output-meta on
 set convert-meta off
 
 # Use Alt/Meta + Delete to delete the preceding word
-#"\e[3;3~": kill-word
+"\e[3;3~": kill-word

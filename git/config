@@ -34,8 +34,11 @@
     # Commit all changes
     ca = commit -a
 
+    # Amend the currently staged files to the latest commit
+    amend = commit --amend --reuse-message=HEAD
+
     # Switch to a branch, creating it if necessary
-    go = checkout -B
+    go = checkout -b
 
     # Show verbose output about tags, branches or remotes
     tags = tag -l
@@ -45,12 +48,31 @@
     # Undo a `git push`
     undopush = push -f origin HEAD^:master
 
+    # Removes obsolete files/branches and optimizes the local repository
     # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
+    # `git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d`: remove local branches which have been merged
     # `git gc`: cleanup unnecessary files and optimize the local repository
+    trim = !git remote prune origin; git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d; git gc
+
+    # Clears any changes made to the repository
     # `git clean -df`: remove untracked files and directories from the working tree
     # `git stash clear`: remove all stashed states
-    trim = !git remote prune origin && git gc
-    cleanup = !git clean -df && git stash clear
+    clear = !git clean -df && git reset --hard && git stash clear
+
+    # forks current repo and updates remotes
+    fork = !hub fork && git remote rename origin upstream && git remote rename pkruithof origin
+
+    # Merge GitHub pull request on top of the `master` branch
+    mpr = "!f() { \
+      if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+        git fetch origin refs/pull/$1/head:pr/$1 && \
+        git rebase master pr/$1 && \
+        git checkout master && \
+        git merge pr/$1 && \
+        git branch -D pr/$1 && \
+        git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+      fi \
+    }; f"
 
     # updates fork to latest upstream version:
     # 1. checkout master
@@ -59,6 +81,8 @@
     # 4. push origin
     sync = !git checkout master && git fetch upstream && git reset --hard upstream/master && git push origin master
 
+    # shortcut for squashing commits
+    squash = rebase -i upstream/master
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
@@ -73,6 +97,10 @@
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
 	editor = vim
+
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
 
 [credential]
     helper = osxkeychain
