@@ -5,8 +5,8 @@
 # - variables which is depended on, like LANGUAGE
 
 export DOTFILES_DIRECTORY="${HOME}/dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/pkruithof/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="https://github.com/pkruithof/dotfiles"
+DOTFILES_TARBALL_PATH="https://github.com/stefanius/dotfiles/tarball/master"
+DOTFILES_GIT_REMOTE="https://github.com/stefanius/dotfiles"
 
 link() {
   # Force create/replace the symlink.
@@ -49,7 +49,7 @@ mirrorfiles() {
     link "zsh/login"           ".zlogin"
     link "zsh/config"          ".zsh/config"
     link "zsh/input"           ".zsh/input"
-    link "zsh/pk.zsh-theme"    ".oh-my-zsh/themes/pk.zsh-theme"
+    link "zsh/stefanius.zsh-theme"    ".oh-my-zsh/themes/stefanius.zsh-theme"
 
     # Bash files
     link "bash/rc"             ".bashrc"
