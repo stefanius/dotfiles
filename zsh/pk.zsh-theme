@@ -96,5 +96,5 @@ ZSH_THEME_GIT_PROMPT_DELETED="-"
 ZSH_THEME_GIT_PROMPT_RENAMED="➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="≠"
 
-#RPROMPT='%{$solar[base02]%}load:$(get_load)'
+RPROMPT='%{$solar[base02]%}load:$(get_load)'
 #RPROMPT+=' · %{$solar_bold[cyan]%}%*%{$reset_color%}'
