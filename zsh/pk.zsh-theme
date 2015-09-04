@@ -66,6 +66,8 @@ PROMPT='
 '                                          # start with empty line
 PROMPT+='%{$solar[orange]%}%n'             # user
 PROMPT+='%{$solar[base3]%}@'               # @
+PROMPT+='%{$solar[base3]%}@'               # @
+PROMPT+='%{$solar[base3]%}@'               # @
 PROMPT+='%{$solar[yellow]%}%m'             # host
 PROMPT+='%{$solar[base3]%}:'               # path char
 PROMPT+='%{$solar[green]%}${PWD/#$HOME/~}' # pwd
