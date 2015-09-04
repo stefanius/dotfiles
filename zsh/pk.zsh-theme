@@ -66,13 +66,12 @@ PROMPT='
 '                                          # start with empty line
 PROMPT+='%{$solar[orange]%}%n'             # user
 PROMPT+='%{$solar[base3]%}@'               # @
-PROMPT+='%{$solar[base3]%}@'               # @
-PROMPT+='%{$solar[base3]%}@'               # @
 PROMPT+='%{$solar[yellow]%}%m'             # host
 PROMPT+='%{$solar[base3]%}:'               # path char
 PROMPT+='%{$solar[green]%}${PWD/#$HOME/~}' # pwd
 PROMPT+='%{$reset_color%} '                #
 PROMPT+='$(git_super_status)'              # git branch status
+PROMPT+='$(get_load)'                      # load
 PROMPT+='
 %{$reset_color%}% %#> '                    # newline + prompt char
 
