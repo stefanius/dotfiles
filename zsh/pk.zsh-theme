@@ -61,6 +61,8 @@ precmd () {
   print -Pn "\e]2;%~\a"
 }
 
+RPROMPT='%{$solar[base02]%}load:$(get_load)'
+
 # Build the main prompt
 PROMPT='
 '                                          # start with empty line
