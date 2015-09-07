@@ -28,7 +28,7 @@ foreach file (`echo $sources`)
 end
 
 #add git-helper scripts to path
-PATH=$PATH~/git-helpers 
+PATH=$PATH:~/git-helpers 
 
 # Remove duplicates (copied from http://unix.stackexchange.com/a/14896)
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++')
