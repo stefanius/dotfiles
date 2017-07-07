@@ -6,7 +6,7 @@ colors
 setopt PROMPT_SUBST
 
 function get_ip() {
-  if [ "$(uname)" == "Darwin" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
     ipconfig getifaddr en0 | awk '{print $1}'
   else 
     hostname -I | awk '{print $1}'
