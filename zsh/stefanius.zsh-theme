@@ -67,10 +67,10 @@ precmd () {
 # Build the main prompt
 PROMPT='
 '                                          # start with empty line
-PROMPT+='%{$solar[orange]%}[$(get_ip)]'    # ip
 PROMPT+='%{$solar[orange]%}%n'             # user
 PROMPT+='%{$solar[base3]%}@'               # @
 PROMPT+='%{$solar[yellow]%}%m'             # host
+PROMPT+='%{$solar[red]%}[%{$solar[orange]%}$(get_ip)%{$solar[red]%}]'    # ip
 PROMPT+='%{$solar[base3]%}:'               # path char
 PROMPT+='%{$solar[green]%}${PWD/#$HOME/~}' # pwd
 PROMPT+='%{$reset_color%} '                #
@@ -99,5 +99,5 @@ ZSH_THEME_GIT_PROMPT_DELETED="-"
 ZSH_THEME_GIT_PROMPT_RENAMED="➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="≠"
 
-RPROMPT='%{$solar[base02]%}load:$(get_load)'
+RPROMPT='%{$solar[cyan]%}load:$(get_load)'
 RPROMPT+=' · %{$solar_bold[cyan]%}%*%{$reset_color%}'
