@@ -6,12 +6,13 @@ colors
 setopt PROMPT_SUBST
 
 function get_ip() {
-	if [ "$(uname)" == "Darwin" ]; then
-			ipconfig getifaddr en0        
-	elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-			hostname -I | awk '{print $1}'
-	fi
+  if [ "$(uname)" == "Darwin" ]; then
+    ipconfig getifaddr en0 | awk '{print $1}'
+  else 
+    hostname -I | awk '{print $1}'
+  fi
 }
+
 function get_load() {
   uptime | awk '{print $(NF-2)}' | sed 's/,$//g'
 }
