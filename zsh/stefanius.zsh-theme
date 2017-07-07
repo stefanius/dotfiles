@@ -5,6 +5,9 @@ colors
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
 
+function get_ip() {
+  ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 |awk '{ print $1}'
+}
 function get_load() {
   uptime | awk '{print $(NF-2)}' | sed 's/,$//g'
 }
@@ -64,6 +67,7 @@ precmd () {
 # Build the main prompt
 PROMPT='
 '                                          # start with empty line
+PROMPT+='%{$solar[orange]%}[$(get_ip)]'    # ip
 PROMPT+='%{$solar[orange]%}%n'             # user
 PROMPT+='%{$solar[base3]%}@'               # @
 PROMPT+='%{$solar[yellow]%}%m'             # host
