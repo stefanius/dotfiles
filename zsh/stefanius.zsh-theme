@@ -112,5 +112,5 @@ ZSH_THEME_GIT_PROMPT_RENAMED="➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="≠"
 
 RPROMPT='%{$solar[cyan]%}load:$(get_load)'
-RPROMPT+='%{$solar[cyan]%}$(get_ram_usage)'
+RPROMPT+=' · %{$solar[cyan]%}$(get_ram_usage)'
 RPROMPT+=' · %{$solar_bold[cyan]%}%*%{$reset_color%}'
