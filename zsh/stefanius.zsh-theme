@@ -13,6 +13,13 @@ function get_ip() {
   fi
 }
 
+function get_ram_usage() {
+  if [ "$(uname)" = "Darwin" ]; then
+
+  else
+    free | awk '/Mem/{print("used ram:"), $3/$2*100}'
+  fi
+}
 function get_load() {
   uptime | awk '{print $(NF-2)}' | sed 's/,$//g'
 }
@@ -105,4 +112,5 @@ ZSH_THEME_GIT_PROMPT_RENAMED="➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="≠"
 
 RPROMPT='%{$solar[cyan]%}load:$(get_load)'
+RPROMPT+='%{$solar[cyan]%}$(get_ram_usage)'
 RPROMPT+=' · %{$solar_bold[cyan]%}%*%{$reset_color%}'
