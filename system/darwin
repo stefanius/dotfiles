@@ -54,3 +54,7 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 # Flush Directory Service cache
 alias flushdns="dscacheutil -flushcache"
+
+# Git aliases
+
+alias guf='git fetch --all; git checkout master; git reset --hard upstream/master; git push origin master; git status'
