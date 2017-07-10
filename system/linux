@@ -45,6 +45,8 @@ if [[ "$LSB_DISTRIBUTOR" == "archlinux" ]]; then
     alias reboot="sudo systemctl start reboot.target"
 fi
 
-#Git Aliasses
-
-alias guf='git fetch --all; git checkout master; git reset --hard upstream/master; git push origin master; git status'
+#Git Aliases
+alias git-update-fork='git fetch --all; git checkout master; git reset --hard upstream/master; git push origin master; git status'
+alias git-rebase='git fetch upstream; git rebase upstream/master; git status'
+alias git-rebase-continue='git rebase --continue'
+alias git-graph='git log --oneline --decorate --all --graph'
