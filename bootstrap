@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+bash environment
+
 : ${INSTALL_DIR:="${HOME}/.dotfiles"}
 DOTFILES_REPO="https://github.com/stefanius/dotfiles"
 
