@@ -35,7 +35,7 @@ Tools](https://developer.apple.com/downloads) if you're on a Mac.
 This will download a shell script that clones the repository into `~/dotfiles`.
 
 ```bash
-bash -c "$(curl -fsSL raw.github.com/pkruithof/dotfiles/master/bootstrap)"
+bash -c "$(curl -fsSL raw.github.com/stefanius/dotfiles/master/bootstrap)"
 ```
 
 ### Using Git
