@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname $(readlink -f "${BASH_SOURCE}"))/../"
 
-source ./environment
+source ${DOTFILES_ROOT}/environment
 source ${DOTFILES_ROOT}/lib/run
 source ${DOTFILES_ROOT}/lib/output
 source ${DOTFILES_ROOT}/lib/tests
