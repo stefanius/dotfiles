@@ -42,7 +42,7 @@ bash -c "$(curl -fsSL raw.github.com/stefanius/dotfiles/master/bootstrap)"
 You can manually checkout the repo if you want to, and run the install script afterwards.
 
 ```bash
-git clone https://github.com/pkruithof/dotfiles.git ~/.dotfiles && ~/.dotfiles/bin/dotfiles
+git clone https://github.com/stefanius/dotfiles.git ~/.dotfiles && ~/.dotfiles/bin/dotfiles
 ```
 
 ## How to update
