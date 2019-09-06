@@ -1,7 +1,7 @@
 # Folder view configuration files
 .DS_Store
 Desktop.ini
-
+.vagrant
 # Thumbnail cache files
 ._*
 Thumbs.db
@@ -9,6 +9,9 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# k8s secrets
+*-secret.yaml
 
 # Always-ignore extensions
 *.idea
@@ -22,3 +25,5 @@ Thumbs.db
 *.vi
 *~
 *.sass-cache
+*.vault-password
+

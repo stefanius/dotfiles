@@ -1,7 +1,18 @@
 # My dotfiles
 
 ## About
-This is my collection of dotfiles. It contains shell setup instructions, aliases, functions, plugins, etc. Most of it I did not write but collected from other dotfiles repositories.
+
+This is my collection of dotfiles. There are many like it but this one is mine.
+
+It does the following:
+
+* installs zsh as the default shell
+* installs zplug as plugin manager
+* installs some useful zsh plugins
+* sets up pure prompt
+* sets up configuration files for various programs like git, curl, ssh, etc.
+* performs OS-specific setup
+
 
 ## CAUTION
 **NOT FOR BASH USERS!**
@@ -24,27 +35,26 @@ Tools](https://developer.apple.com/downloads) if you're on a Mac.
 This will download a shell script that clones the repository into `~/dotfiles`.
 
 ```bash
-bash -c "$(curl -fsSL raw.github.com/stefanius/dotfiles/master/bin/dotfiles)"
+bash -c "$(curl -fsSL raw.github.com/pkruithof/dotfiles/master/bootstrap)"
 ```
 
 ### Using Git
 You can manually checkout the repo if you want to, and run the install script afterwards.
 
 ```bash
-git clone https://github.com/stefanius/dotfiles.git ~/dotfiles && ~/dotfiles/bin/dotfiles
+git clone https://github.com/pkruithof/dotfiles.git ~/.dotfiles && ~/.dotfiles/bin/dotfiles
 ```
 
 ## How to update
 You should run the update when:
 
-* You make a change to `~/.dotfiles/git/gitconfig` (the only file that is copied rather than symlinked).
 * You want to pull changes from the remote repository.
 * You want to update Homebrew formulae and Node packages.
 
 Run the dotfiles command:
 
 ```bash
-~/dotfiles/bin/dotfiles
+~/.dotfiles/bin/dotfiles
 ```
 
 Options:
@@ -60,16 +70,6 @@ Options:
     </tr>
 </table>
 
-### Custom OS X defaults
-Custom OS X settings can be applied during the `dotfiles` process. They can also be applied independently by running the following command:
-
-```bash
-~/dotfiles/bin/osxdefaults
-```
-
-### Oh My Zsh
-The wonderful [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is installed along with a custom prompt theme, inspired by [necolas' one](https://github.com/necolas/dotfiles/blob/master/README.md#custom-bash-prompt).
-
 ## TODO
 Document local settings
 
@@ -77,4 +77,3 @@ Document local settings
 Thanks to:
 
 * [Mathias Bynens](http://mathiasbynens.be) for (probably without knowing) letting me copy me his [collection of dotfiles](https://github.com/mathiasbynens/dotfiles)
-* [Nicolas Gallagher](http://nicolasgallagher.com) for his awesome [installation procedure](https://github.com/necolas/dotfiles/)
