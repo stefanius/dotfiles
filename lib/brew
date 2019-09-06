@@ -10,40 +10,18 @@ run_brew() {
         e_info "Updating outdated brews..."
         brew upgrade --all
 
-        # Tap stuff (be quiet if already tapped)
-        brew tap homebrew/dupes &> /dev/null
-        brew tap homebrew/versions &> /dev/null
-        brew tap homebrew/homebrew-php &> /dev/null
-
         e_info "Checking status of desired Homebrew formulae..."
         local list_formulae
         local -a missing_formulae
         local -a desired_formulae=(
             'coreutils' # GNU core utilities (those that come with OS X are outdated)
             'findutils'
-            'ack'
-            'bash'
-            'bash-completion'
-            'curl'
-            'htop'
-            'git'
-            'htop-osx'
-            'hub'
-            'jpeg'
             'macvim --override-system-vim'
             'ncdu'
             'node'
             'optipng'
             'pgrep'
-            'php71 --with-fpm --with-intl'
-            'php-cs-fixer'
-            'phpmd'
-            'composer'
-            'rename'
-            'ssh-copy-id'
-            'tmux'
-            'tree'
-            'watch'
+            'php73 --with-fpm --with-intl'
             'wget --enable-iri'
             'zsh'
             'zsh-completions'
